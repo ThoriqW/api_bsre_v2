@@ -6,6 +6,8 @@ const SignPdfRoutes = require("./routes/sign_pdf_routes");
 const path = require("path");
 const dotenv = require("dotenv");
 
+dotenv.config();
+
 const app = express();
 const hostname = process.env.SECRET_HOST_API_GATEWAY;
 const port = process.env.SECRET_PORT_API_GATEWAY;
