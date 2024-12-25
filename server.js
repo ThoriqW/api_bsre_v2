@@ -4,11 +4,11 @@ const userRoutes = require("./routes/user_routes");
 const uploadPdf = require("./routes/upload_pdf_routes");
 const SignPdfRoutes = require("./routes/sign_pdf_routes");
 const path = require("path");
-const fs = require("fs");
+const dotenv = require("dotenv");
 
 const app = express();
-const hostname = "127.0.0.1";
-const port = 8000;
+const hostname = process.env.SECRET_HOST_API_GATEWAY;
+const port = process.env.SECRET_PORT_API_GATEWAY;
 
 app.use(bodyParser.json());
 
@@ -21,7 +21,7 @@ app.use(uploadPdf);
 //SIGN PDF
 app.use("/api/v2", SignPdfRoutes);
 
-// Sajikan folder 'berkastte' sebagai direktori statis
+//AGAR BERKASTTE BISA DIAKSES DI BROWSER
 app.use("/berkastte", express.static(path.join(__dirname, "berkastte")));
 
 app.get("/", (req, res) => {
