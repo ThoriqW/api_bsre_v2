@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const userRoutes = require("./routes/user_routes");
 const uploadPdf = require("./routes/upload_pdf_routes");
+const deletePdf = require("./routes/delete_pdf_routes");
 const SignPdfRoutes = require("./routes/sign_pdf_routes");
 const path = require("path");
 const dotenv = require("dotenv");
@@ -23,7 +24,10 @@ app.use(uploadPdf);
 //SIGN PDF
 app.use("/api/v2", SignPdfRoutes);
 
-//AGAR BERKASTTE BISA DIAKSES DI BROWSER
+//DELETE PDF
+app.use(deletePdf);
+
+//PUBLIC BERKAS TTE
 app.use("/berkastte", express.static(path.join(__dirname, "berkastte")));
 
 app.get("/", (req, res) => {
