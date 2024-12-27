@@ -190,6 +190,7 @@ router.post(
           code: 400,
         },
       };
+      console.log(error);
       console.log(hasil);
       res.json(hasil);
     }
